@@ -1,0 +1,4 @@
+title -> varchar
+link  -> varchar
+date  -> date 
+body  -> text

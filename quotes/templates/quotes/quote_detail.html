@@ -1,0 +1,23 @@
+{% extends "quotes/quote.html" %}
+
+{% block title %}
+    Все Предложении
+{% endblock title %}
+
+{% block content %}
+    <h1>Детально: </h1>
+    <table class="quote">
+    	<tr><td>ID</td><td>{{quote.id}}</td></tr>
+        <tr><td>Имя Пользователя</td><td>{{quote.name}}</td></tr>
+        <tr><td>Положение</td><td>{{quote.company}}</td></tr>
+        <tr><td>Почта</td><td>{{quote.email}}</td></tr>
+        <tr><td>Веб сайт</td><td>{{quote.web}}</td></tr>
+        <tr><td>Работа</td><td>{{quote.description}}</td></tr>
+        <tr><td>Статус сайта</td><td>{{quote.get_sitestatus_display}}</td></tr>
+        <tr><td>Приоритет</td><td>{{quote.get_prioritystatus_display}}</td></tr>
+        <tr><td>Дата представления </td><td>{{quote.submitted|date:"m-d-y"}}</td></tr>
+        <tr><td>Дата предложения</td><td>{{quote.quotedate|date:"m-d-y"}}</td></tr>
+        <tr><td>Цена предложения</td><td>{{quote.quoteprice|default:"--"}}</td></tr>
+    </table>
+    <p><a href="../show">Назад к списку предложении</a></p>
+{% endblock content %}

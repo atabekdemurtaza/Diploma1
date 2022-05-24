@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		{% block title %}
+			Untitled Document
+		{% endblock %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header">
+			<div id="logo">
+				<img src="{% static 'logo.jpg' %}" alt="logo"/>
+				<span>
+					{% if user.is_authenticated %}
+						Привет! {{user.username}}
+						<a href="{% url 'logout' %}?next=/">Выйти</a>
+					{% else %} 
+						<a class="login" href="{% url 'login' %}?next=/">Войти</a>
+						<a class="signup" href="{% url 'register' %}">Регистрация</a>
+					{% endif %}
+				</span>
+			</div>
+			<div id="topbanner">
+				<img class="top" src="{% static 'atabekdemurtaza.jpg' %}" alt="topbanner" />
+			</div>
+		</header>
+		<aside id="leftsidebar">
+			<nav id="nav">
+				<ul>
+					{% block sidenav %}
+					    <li>Menu 1</li>
+						<li>Menu 2</li>
+						<li>Menu 3</li>
+					{% endblock sidenav %}
+					<li>
+						<a href="/contact">
+							Контакты
+						</a>
+					</li>
+					<li>
+						<a href="/quote/">
+							Получить предложения
+						</a>
+					</li>
+					<li>
+						<a href="/quote/show">
+							Показать все предложении
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<section id="main">
+			{% block content %}
+				{% autoescape off %}
+				{% endautoescape %}
+			{% endblock content %}
+		</section>
+		<footer id="footer">
+			Copyright &copy; 2022 atabekdemurtaza
+		</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Регистрация
+{% endblock title %}
+
+{% block sidenav %}
+    <li>
+    	<a href="/">Домой</a>
+    </li>
+{% endblock sidenav %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+  	<form method="post" action="">
+  		<table>
+            {{form|crispy}}
+  			<tr>
+  				<td>&nbsp;</td>
+  				<td><input type="submit" value="Регистрация"/></td>
+  			</tr>
+  		</table>
+  		<input type="hidden" name="next" value="{{next}}"/>
+  		{% csrf_token %}
+  	</form>
+{% endblock content %}

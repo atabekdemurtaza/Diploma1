@@ -1,0 +1,29 @@
+{% extends "pages/page.html" %}
+
+{% block title %}
+    Контакты
+{% endblock title %}
+
+{% block content %}
+    <h1>Контакты</h1>
+    {% if submitted %}
+        <p class="success">
+        	Ваше сообщение успешно отправлен 😁
+        </p>
+    {% else %}
+    	<form action="" method="post" novalidate>
+    		<table>
+    			{{form.as_table}}
+    			<tr>
+    				<td>&nbsp;</td>
+    				<td>
+    					<button class="pulse">
+    						Отправить
+    					</button>
+    				</td>
+    			</tr>
+    		</table>
+    		{% csrf_token %}
+    	</form>
+    {% endif %}
+{% endblock content %}

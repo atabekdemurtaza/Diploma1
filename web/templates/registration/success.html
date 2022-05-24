@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Успешно
+{% endblock title %}
+
+{% block sidenav %}
+    <li>
+    	<a href="/">
+    		Домой
+    	</a>
+    </li>
+{% endblock sidenav %}
+
+{% block content %}
+    <h1>Успешно зарегистрировались 😁</h1>
+    <p>Нажмите <a href="{% url 'login' %}?next=/">сюда</a> что бы вернутся</p>
+
+{% endblock content %}
